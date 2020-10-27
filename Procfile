@@ -1,1 +1,1 @@
-web: FLASK_APP=app.py flask run
+web: gunicorn app:app --max-requests 2

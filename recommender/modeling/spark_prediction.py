@@ -21,6 +21,7 @@ def results(user_id):
     
     # load data
     movies = load_csv_to_spark_df('dataset/movies.csv', spark)
+#     movie_rating = load_csv_to_spark_rdd('dataset/ratings.csv', sc)
     movie_rating = load_csv_to_spark_rdd('dataset/ratings_greater_500.csv', sc)
     
     # preprocess data -- only need ["userId", "movieId", "rating"]
@@ -40,7 +41,7 @@ def results(user_id):
             model = model, 
             ratings_data = rating_data, 
             df_movies = movies, 
-            user_id = 1, 
+            user_id = user_id, 
             n_recommendations = 10, 
             spark_context = sc)
 
